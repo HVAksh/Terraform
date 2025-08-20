@@ -4,7 +4,7 @@ pipeline {
     ARM_CLIENT_ID         = credentials('azure-sp')
     ARM_CLIENT_SECRET     = credentials('azure-sp')
     ARM_TENANT_ID         = credentials('azure-sp')
-    ARM_SUBSCRIPTION_ID   = credentials('azure-sp')
+    ARM_SUBSCRIPTION_ID   = credentials('SUBSCRIPTION_ID')
   }
   stages {
     stage('Git checkout') {
