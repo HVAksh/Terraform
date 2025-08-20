@@ -10,7 +10,7 @@ pipeline {
     stage('Git checkout') {
       steps {
         git branch: 'main',
-        url: 'https://github.com/HVAksh/Azure-basic-Project-with-azure-app-service.git'
+        url: 'https://github.com/HVAksh/Terraform.git'
       }
     }
     stage('Terraform Init') {
