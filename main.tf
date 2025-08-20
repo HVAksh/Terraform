@@ -3,8 +3,8 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = var.rg_name
-  location = var.location
+  name     = testing
+  location = soutn-india
 }
 
 resource "azurerm_virtual_network" "vnet" {
