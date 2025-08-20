@@ -4,7 +4,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = "testing"
-  location = "south-india"
+  location = "South India"
 }
 
 resource "azurerm_virtual_network" "vnet" {
