@@ -7,6 +7,12 @@ pipeline {
     ARM_SUBSCRIPTION_ID   = credentials('ARM_SUBSCRIPTION_ID')
   }
   stages {
+    stage('Git checkout') {
+      steps {
+        git branch: 'main',
+        url: 'https://github.com/HVAksh/Azure-basic-Project-with-azure-app-service.git'
+      }
+    }
     stage('Terraform Init') {
       steps {
         sh 'terraform init'
