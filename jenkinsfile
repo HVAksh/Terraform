@@ -1,10 +1,10 @@
 pipeline {
   agent any
   environment {
-    ARM_CLIENT_ID         = credentials('CLIENT_ID')
-    ARM_CLIENT_SECRET     = credentials('CLIENT_SECRET')
-    ARM_TENANT_ID         = credentials('TENANT_ID')
-    ARM_SUBSCRIPTION_ID   = credentials('SUBSCRIPTION_ID')
+    ARM_CLIENT_ID         = credentials('azure-sp')
+    ARM_CLIENT_SECRET     = credentials('azure-sp')
+    ARM_TENANT_ID         = credentials('azure-sp')
+    ARM_SUBSCRIPTION_ID   = credentials('azure-sp')
   }
   stages {
     stage('Git checkout') {
