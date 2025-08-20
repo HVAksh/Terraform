@@ -3,8 +3,8 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = testing
-  location = soutn-india
+  name     = "testing"
+  location = "soutn-india"
 }
 
 resource "azurerm_virtual_network" "vnet" {
@@ -37,15 +37,15 @@ resource "azurerm_linux_virtual_machine" "vm" {
   name                = "vm-main"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  size                = Standard_B1s
-  admin_username      = azureuser
+  size                = "Standard_B1s"
+  admin_username      = "azureuser"
   network_interface_ids = [
     azurerm_network_interface.nic.id,
   ]
 
   admin_ssh_key {
-    username   = azureuser
-    public_key = /var/lib/jenkins/.ssh/id_rsa.pub
+    username   = "azureuser"
+    public_key = file("/var/lib/jenkins/.ssh/id_rsa.pub")
   }
 
   os_disk {
