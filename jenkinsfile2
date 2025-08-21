@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    environment {
+        ARM_CLIENT_ID       = credentials('azure-sp-client-id')
+        ARM_CLIENT_SECRET   = credentials('azure-sp-client-secret')
+        ARM_SUBSCRIPTION_ID = credentials('azure-sp-subscription-id')
+        ARM_TENANT_ID       = credentials('azure-sp-tenant-id')
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git(branch: 'main', credentialsId: 'github-token', url: 'https://github.com/rs87546/azure-vm-terraform.git')
+            }
+        }
+        stage('Terraform Init') {
+            steps {
+                sh 'terraform init'
+            }
+        }
+        stage('Terraform Validate') {
+            steps {
+                sh 'terraform validate'
+            }
+        }
+        stage('Terraform Plan') {
+            steps {
+                sh 'terraform plan -out=tfplan'
+            }
+        }
+        stage('Terraform Apply') {
+            steps {
+                sh 'terraform apply -auto-approve tfplan'
+            }
+        }
+    }
+}
+
